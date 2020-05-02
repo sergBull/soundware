@@ -11,7 +11,7 @@ function setScreenBuffer(x, y, w, h) {
 	
 	return {
 		data: data,
-		height: height,
+		height: h,
 		length: w * h,
 		scale: {
 			x: 1,
