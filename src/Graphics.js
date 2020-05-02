@@ -1,3 +1,14 @@
+function render(buffer, canvas) {
+	var ctx = canvas.context;
+	
+	var pixels = new Uint8ClampedArray(buffer.data);
+	
+	var screen = new ImageData(pixels, buffer.width, buffer.height);
+	
+	ctx.putImageData(screen, buffer.x, buffer.y);
+}
+
+
 function setScreenBuffer(x, y, w, h) {
 	var data = new Array(w * h * 4);
 	
@@ -23,12 +34,17 @@ function setScreenBuffer(x, y, w, h) {
 	};
 }
 
-function render(buffer, canvas) {
-	var ctx = canvas.context;
+function setPixel(buffer, x, y, r, g, b, a) {
+	var i = (y * buffer.width + x) * 4;
 	
-	var pixels = new Uint8ClampedArray(buffer.data);
+	var data = buffer.data;
 	
-	var screen = new ImageData(pixels, buffer.width, buffer.height);
+	var dr = data[i + 0];
+	var dg = data[i + 1];
+	var db = data[i + 2];
 	
-	ctx.putImageData(screen, buffer.x, buffer.y);
+	data[i + 0] = dr * (1 / (a / 255)) + r * (a / 255);
+	data[i + 1] = dg * (1 / (a / 255)) + g * (a / 255);
+	data[i + 2] = db * (1 / (a / 255)) + b * (a / 255);
+	data[i + 3] = 255;
 }
