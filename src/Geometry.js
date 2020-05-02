@@ -1,4 +1,4 @@
-function setPoint(buffer, t0, size, color) {
+function point(buffer, t0, size, color) {
 	var x = t0[0];
 	var y = t0[1];
 	
