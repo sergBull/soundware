@@ -26,7 +26,7 @@ function setScreenBuffer(x, y, w, h) {
 function render(buffer, canvas) {
 	var ctx = canvas.context;
 	
-	var pixels = New Uint8ClampedArray(buffer.data);
+	var pixels = new Uint8ClampedArray(buffer.data);
 	
 	var screen = new ImageData(pixels, buffer.width, buffer.height);
 	
