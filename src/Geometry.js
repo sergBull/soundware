@@ -9,7 +9,7 @@ function line(buffer t0, t1, lw, color) {
 	var dy = abs(y1 - y0);
 	
 	var sx = x0 < x1 ? 1 : -1;
-	var sy = y0 < y1 ? 1 : - 1;
+	var sy = y0 < y1 ? 1 : -1;
 	
 	var err = dx - dy;
 	
